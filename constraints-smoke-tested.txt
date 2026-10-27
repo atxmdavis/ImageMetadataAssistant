@@ -1,0 +1,10 @@
+# Direct dependencies installed during macOS arm64 / Python 3.9.6 smoke checks.
+# Usage: pip install -r requirements.txt -c constraints-smoke-tested.txt
+# Not a complete lockfile; fresh installation and model inference not verified.
+Flask==3.1.3
+Pillow==11.3.0
+piexif==1.1.3
+transformers==4.57.6
+torch==2.8.0
+sentencepiece==0.2.1
+protobuf==6.33.5

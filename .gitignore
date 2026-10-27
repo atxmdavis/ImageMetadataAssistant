@@ -19,6 +19,8 @@ dist/
 *.p12
 *.pfx
 .local_resume_state.json*
+.image_describer_cli_checkpoint.json*
+.image_describer_cli_checkpoint.done
 *.log
 .aws/
 .ssh/

@@ -40,11 +40,32 @@ history before publishing a previously used repository.
 
 ## Install
 
+Prerequisites:
+
+- The existing environment was smoke-tested on macOS (Apple Silicon) with Python
+  3.9.6. Other Python versions and operating systems have not been verified.
+- A desktop session is needed for native file/folder pickers. The browser app uses
+  AppleScript on macOS and Tkinter on other platforms; the CLI folder picker
+  requires Tkinter. CLI `--folder` usage does not require a picker.
+- Node.js is needed only for `qa.sh` JavaScript syntax checks (checked with
+  Node.js 24.11.0).
+- Model weights download on first use and require disk space and internet access.
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
+
+To use the direct dependency versions installed in the smoke-tested environment:
+
+```bash
+pip install -r requirements.txt -c constraints-smoke-tested.txt
+```
+
+The constraints record installed versions, not a complete dependency lock or a
+fresh-install validation. Transitive dependencies remain unpinned, and full model
+inference has not been revalidated as part of this repository cleanup.
 
 ## Start The App
 
@@ -62,6 +83,11 @@ One-line restart:
 ```bash
 ./restart_web_app.sh
 ```
+
+The restart helper requires Bash, `pgrep`, `pkill`, and a project-local `.venv`;
+it is intended for macOS/Linux shells. On Windows, activate the environment with
+`.venv\Scripts\activate` and start `python web_app.py` directly. Windows and Linux
+behavior have not been tested.
 
 Run QA checks:
 
@@ -280,3 +306,11 @@ Re-select files using `Select Folder`/`Select Image` and grant write permission 
 
 ### How to verify metadata was written
 Re-load the same image in the app and inspect `Raw JSON`, or inspect metadata with external EXIF/PNG metadata tools.
+
+## License
+
+Copyright (c) 2026 Michael Davis. All rights reserved.
+
+No open-source license is granted for this project's code or documentation.
+Third-party libraries, model weights, and other third-party assets remain subject
+to their respective licenses and terms.
