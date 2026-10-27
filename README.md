@@ -2,6 +2,8 @@
 
 Browser app + CLI for adding searchable image metadata in-place.
 
+![Image Metadata Assistant showing source selection, processing settings, an image preview, and editable generated metadata](docs/images/image-metadata-assistant.png)
+
 The app analyzes images and stores metadata directly in the image file so other tools can sort/search by:
 - description
 - keywords (objects)
