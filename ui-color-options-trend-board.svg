@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="1100" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF4FB"/>
+      <stop offset="1" stop-color="#F8FBFF"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#102A43" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .title { font: 700 52px Roboto, Segoe UI, Arial, sans-serif; fill: #102A43; }
+      .subtitle { font: 400 22px Roboto, Segoe UI, Arial, sans-serif; fill: #486581; }
+      .cardTitle { font: 700 30px Roboto, Segoe UI, Arial, sans-serif; fill: #102A43; }
+      .cardBody { font: 400 19px Roboto, Segoe UI, Arial, sans-serif; fill: #52667A; }
+      .labelDark { font: 700 18px Roboto Mono, Consolas, monospace; fill: #102A43; }
+      .labelLight { font: 700 18px Roboto Mono, Consolas, monospace; fill: #FFFFFF; }
+      .small { font: 500 17px Roboto, Segoe UI, Arial, sans-serif; fill: #6B7C93; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1100" fill="url(#bg)"/>
+
+  <text x="72" y="92" class="title">Current UI Color Directions</text>
+  <text x="72" y="132" class="subtitle">Built from recurring 2025–2026 product/UI trends: warm neutrals, electric blue, coral energy, mint wellness, and mood-mode dark surfaces.</text>
+
+  <!-- Card 1 -->
+  <g filter="url(#shadow)">
+    <rect x="72" y="190" width="680" height="360" rx="24" fill="#FFFFFF" stroke="#D8E3F0"/>
+  </g>
+  <text x="108" y="246" class="cardTitle">1. Calm SaaS Blue</text>
+  <text x="108" y="282" class="cardBody">Safest option for this app. Clean, accessible, familiar.</text>
+  <rect x="108" y="320" width="120" height="120" rx="18" fill="#F4F7FB" stroke="#D8E3F0"/>
+  <text x="124" y="389" class="labelDark">#F4F7FB</text>
+  <rect x="244" y="320" width="120" height="120" rx="18" fill="#1565C0"/>
+  <text x="260" y="389" class="labelLight">#1565C0</text>
+  <rect x="380" y="320" width="120" height="120" rx="18" fill="#102A43"/>
+  <text x="396" y="389" class="labelLight">#102A43</text>
+  <rect x="516" y="320" width="120" height="120" rx="18" fill="#42A5F5"/>
+  <text x="532" y="389" class="labelDark">#42A5F5</text>
+  <text x="108" y="488" class="small">Background / Primary / Ink / Supporting accent</text>
+
+  <!-- Card 2 -->
+  <g filter="url(#shadow)">
+    <rect x="776" y="190" width="752" height="360" rx="24" fill="#FFFFFF" stroke="#D8E3F0"/>
+  </g>
+  <text x="812" y="246" class="cardTitle">2. Warm White + Coral</text>
+  <text x="812" y="282" class="cardBody">Popular right now for friendlier dashboards and more human product UIs.</text>
+  <rect x="812" y="320" width="120" height="120" rx="18" fill="#F3EFE8" stroke="#D8E3F0"/>
+  <text x="828" y="389" class="labelDark">#F3EFE8</text>
+  <rect x="948" y="320" width="120" height="120" rx="18" fill="#FF6A3D"/>
+  <text x="964" y="389" class="labelLight">#FF6A3D</text>
+  <rect x="1084" y="320" width="120" height="120" rx="18" fill="#1D3557"/>
+  <text x="1100" y="389" class="labelLight">#1D3557</text>
+  <rect x="1220" y="320" width="120" height="120" rx="18" fill="#FFD6C8"/>
+  <text x="1236" y="389" class="labelDark">#FFD6C8</text>
+  <rect x="1356" y="320" width="120" height="120" rx="18" fill="#F2B261"/>
+  <text x="1372" y="389" class="labelDark">#F2B261</text>
+  <text x="812" y="488" class="small">Warm base / CTA / Typography / Soft state / Secondary accent</text>
+
+  <!-- Card 3 -->
+  <g filter="url(#shadow)">
+    <rect x="72" y="592" width="680" height="360" rx="24" fill="#FFFFFF" stroke="#D8E3F0"/>
+  </g>
+  <text x="108" y="648" class="cardTitle">3. Mint + Steel</text>
+  <text x="108" y="684" class="cardBody">Fits the “digital pastel + wellness tech” trend without going soft or childish.</text>
+  <rect x="108" y="722" width="120" height="120" rx="18" fill="#F2FAF7" stroke="#D8E3F0"/>
+  <text x="124" y="791" class="labelDark">#F2FAF7</text>
+  <rect x="244" y="722" width="120" height="120" rx="18" fill="#A8E6CF"/>
+  <text x="260" y="791" class="labelDark">#A8E6CF</text>
+  <rect x="380" y="722" width="120" height="120" rx="18" fill="#355F8D"/>
+  <text x="396" y="791" class="labelLight">#355F8D</text>
+  <rect x="516" y="722" width="120" height="120" rx="18" fill="#203040"/>
+  <text x="532" y="791" class="labelLight">#203040</text>
+  <text x="108" y="890" class="small">Background / Fresh accent / Primary action / Deep neutral</text>
+
+  <!-- Card 4 -->
+  <g filter="url(#shadow)">
+    <rect x="776" y="592" width="752" height="360" rx="24" fill="#0F1621" stroke="#2C3A4E"/>
+  </g>
+  <text x="812" y="648" class="cardTitle" fill="#ECF2FA">4. Mood Mode Dark</text>
+  <text x="812" y="684" class="cardBody" fill="#B8C7DA">Strong for premium or cinematic workflows. Use carefully for long sessions.</text>
+  <rect x="812" y="722" width="120" height="120" rx="18" fill="#151A21" stroke="#2C3A4E"/>
+  <text x="828" y="791" class="labelLight">#151A21</text>
+  <rect x="948" y="722" width="120" height="120" rx="18" fill="#40E0FF"/>
+  <text x="964" y="791" class="labelDark">#40E0FF</text>
+  <rect x="1084" y="722" width="120" height="120" rx="18" fill="#FF6A3D"/>
+  <text x="1100" y="791" class="labelLight">#FF6A3D</text>
+  <rect x="1220" y="722" width="120" height="120" rx="18" fill="#E9EEF5"/>
+  <text x="1236" y="791" class="labelDark">#E9EEF5</text>
+  <rect x="1356" y="722" width="120" height="120" rx="18" fill="#273140"/>
+  <text x="1372" y="791" class="labelLight">#273140</text>
+  <text x="812" y="890" class="small" fill="#9FB1C7">Surface / Electric accent / Action color / Text / Borders</text>
+
+  <text x="72" y="1012" class="cardTitle">My recommendation for this app</text>
+  <text x="72" y="1050" class="subtitle">Use 1 as the base, then borrow Coral from 2 for warnings/attention and Mint from 3 for positive states. It stays accessible and feels more current without becoming noisy.</text>
+</svg>

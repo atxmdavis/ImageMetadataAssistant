@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Metadata Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script type="module" src="https://esm.run/@material/web/all.js"></script>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="layout layout-wide">
+      <header class="hero card">
+        <h1>Image Metadata Assistant</h1>
+        <p>Work through large image collections with a simple flow: choose your files, pick how you want the run to behave, review the results, and save or export what you need.</p>
+      </header>
+
+      <section class="dashboard-grid">
+        <div class="dashboard-sidebar">
+          <article class="card step-card source-card">
+            <div class="step-head">
+              <div>
+                <h2>Select Source</h2>
+              </div>
+            </div>
+            <div class="source-selection-panel">
+              <p class="source-helper muted">Choose a folder or image to get started.</p>
+              <div class="source-selection-row">
+                <div class="row source-row">
+                  <md-filled-button id="selectFolderBtn" type="button" class="action-primary">Select Folder</md-filled-button>
+                  <md-outlined-button id="selectImageBtn" type="button">Select Image</md-outlined-button>
+                  <md-outlined-button id="serverFolderBtn" type="button" class="action-primary">Select Folder</md-outlined-button>
+                  <md-outlined-button id="serverImageBtn" type="button">Select Image</md-outlined-button>
+                </div>
+              </div>
+              <p class="source-helper option-help">You may see a browser message asking for permission to save changes to your files.</p>
+              <p id="sourceSummaryText" class="source-summary muted">No source selected yet.</p>
+            </div>
+          </article>
+
+          <article class="card step-card configure-card">
+            <div class="step-head">
+              <div>
+                <h2>Configure Run</h2>
+                <p class="step-intro muted">These settings control speed, quality, saving behavior, and extra checks.</p>
+              </div>
+            </div>
+            <div class="inline-options-panel">
+              <div class="options-groups">
+                <section class="option-group is-open" data-base-label="Speed">
+                  <button class="option-group-summary" type="button" aria-expanded="true" aria-controls="optionGroupSpeedPanel">
+                    <span class="summary-title">Speed</span>
+                    <span class="summary-enabled muted"></span>
+                    <span class="material-icons option-group-icon" aria-hidden="true">expand_more</span>
+                  </button>
+                  <div id="optionGroupSpeedPanel" class="option-group-body options-grid">
+                    <label class="option-row">
+                      <md-checkbox id="fastModeToggle" class="option-toggle" checked></md-checkbox>
+                      <span class="option-copy">
+                        <span class="option-title">Fast Analysis Mode</span>
+                        <span class="option-help">Best for large batches when you want results sooner.</span>
+                      </span>
+                    </label>
+                    <label class="option-row">
+                      <md-checkbox id="highRecallToggle" class="option-toggle"></md-checkbox>
+                      <span class="option-copy">
+                        <span class="option-title">High Recall Mode</span>
+                        <span class="option-help">Takes longer, but can catch smaller or less obvious details.</span>
+                      </span>
+                    </label>
+                    <label class="option-row">
+                      <md-checkbox id="skipExistingToggle" class="option-toggle"></md-checkbox>
+                      <span class="option-copy">
+                        <span class="option-title">Skip Existing Metadata</span>
+                        <span class="option-help">Moves past files that already have saved metadata so the run finishes faster.</span>
+                      </span>
+                    </label>
+                  </div>
+                </section>
+
+                <section class="option-group is-open" data-base-label="Quality">
+                  <button class="option-group-summary" type="button" aria-expanded="true" aria-controls="optionGroupQualityPanel">
+                    <span class="summary-title">Quality</span>
+                    <span class="summary-enabled muted"></span>
+                    <span class="material-icons option-group-icon" aria-hidden="true">expand_more</span>
+                  </button>
+                  <div id="optionGroupQualityPanel" class="option-group-body options-grid">
+                    <label class="option-row">
+                      <md-checkbox id="checkMetadataToggle" class="option-toggle"></md-checkbox>
+                      <span class="option-copy">
+                        <span class="option-title">Check Metadata Quality</span>
+                        <span class="option-help">Looks for missing details, repeated words, and weak or messy metadata.</span>
+                      </span>
+                    </label>
+                    <label class="option-row">
+                      <md-checkbox id="repairOnlyToggle" class="option-toggle"></md-checkbox>
+                      <span class="option-copy">
+                        <span class="option-title">Repair Metadata Only</span>
+                        <span class="option-help">Cleans up metadata that is already there without re-analyzing the full image.</span>
+                      </span>
+                    </label>
+                    <label class="option-row">
+                      <md-checkbox id="auditOnlyToggle" class="option-toggle"></md-checkbox>
+                      <span class="option-copy">
+                        <span class="option-title">Read-only Audit Mode</span>
+                        <span class="option-help">Checks files and reports issues without changing anything on disk.</span>
+                      </span>
+                    </label>
+                  </div>
+                </section>
+
+                <section class="option-group is-open" data-base-label="Write Behavior">
+                  <button class="option-group-summary" type="button" aria-expanded="true" aria-controls="optionGroupWritePanel">
+                    <span class="summary-title">Write Behavior</span>
+                    <span class="summary-enabled muted"></span>
+                    <span class="material-icons option-group-icon" aria-hidden="true">expand_more</span>
+                  </button>
+                  <div id="optionGroupWritePanel" class="option-group-body options-grid">
+                    <label class="option-row">
+                      <md-checkbox id="autoApplyToggle" class="option-toggle" checked></md-checkbox>
+                      <span class="option-copy">
+                        <span class="option-title">Auto-apply Metadata</span>
+                        <span class="option-help">Saves metadata automatically as each image is processed.</span>
+                      </span>
+                    </label>
+                    <label class="option-row">
+                      <md-checkbox id="autoResumeToggle" class="option-toggle" checked></md-checkbox>
+                      <span class="option-copy">
+                        <span class="option-title">Enable Checkpoint Resume</span>
+                        <span class="option-help">Remembers your place so you can continue later after stopping a run, refreshing the page, or restarting the app.</span>
+                      </span>
+                    </label>
+                    <label id="removeOnlyOptionRow" class="option-row danger-option">
+                      <md-checkbox id="removeOnlyToggle" class="option-toggle"></md-checkbox>
+                      <span class="option-copy">
+                        <span class="option-title">Remove Metadata Only</span>
+                        <span class="option-help">Removes saved metadata from the selected files without adding anything new.</span>
+                      </span>
+                    </label>
+                  </div>
+                </section>
+
+                <section class="option-group is-open" data-base-label="Safety">
+                  <button class="option-group-summary" type="button" aria-expanded="true" aria-controls="optionGroupSafetyPanel">
+                    <span class="summary-title">Safety</span>
+                    <span class="summary-enabled muted"></span>
+                    <span class="material-icons option-group-icon" aria-hidden="true">expand_more</span>
+                  </button>
+                  <div id="optionGroupSafetyPanel" class="option-group-body options-grid">
+                    <label class="option-row">
+                      <md-checkbox id="detectDuplicatesToggle" class="option-toggle"></md-checkbox>
+                      <span class="option-copy">
+                        <span class="option-title">Detect Duplicate Images</span>
+                        <span class="option-help">Marks exact duplicates and very similar images so they are easier to review.</span>
+                      </span>
+                    </label>
+                    <label class="option-row">
+                      <md-checkbox id="ipRiskToggle" class="option-toggle"></md-checkbox>
+                      <span class="option-copy">
+                        <span class="option-title">Copyright/IP Risk Check</span>
+                        <span class="option-help">Looks for well-known characters, brands, or other imagery that may carry rights concerns.</span>
+                      </span>
+                    </label>
+                  </div>
+                </section>
+              </div>
+              <div id="removeOnlyWarning" class="mode-warning hidden" role="status" aria-live="polite">
+                Remove Metadata Only is on. This run will delete saved metadata from the selected files.
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <article class="card workspace-card">
+          <div class="preview-column">
+            <div id="previewWrap" class="preview-wrap" role="button" tabindex="0" aria-label="Select or drop one image" aria-describedby="dropHint">
+              <img id="previewImage" alt="Current image preview" />
+              <div id="previewOverlay" class="preview-overlay hidden" aria-live="polite">
+                <div class="image-progress-head">
+                  <p id="previewOverlayText">Loading image...</p>
+                  <p id="imageProgressText" class="image-progress-text">0%</p>
+                </div>
+                <div class="image-progress-track" role="progressbar" aria-label="Current image processing progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                  <div id="imageProgressFill" class="image-progress-fill"></div>
+                </div>
+              </div>
+              <div id="dropWarningAlert" class="drop-warning-alert hidden" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="drop-warning-card">
+                  <button id="dropWarningCloseBtn" type="button" class="drop-warning-close" aria-label="Close warning">
+                    <span class="material-icons" aria-hidden="true">close</span>
+                  </button>
+                  <span class="material-icons drop-warning-icon" aria-hidden="true">warning_amber</span>
+                  <div class="drop-warning-copy">
+                    <p class="drop-warning-title">Drop Not Supported</p>
+                    <p id="dropWarningText" class="drop-warning-text"></p>
+                  </div>
+                </div>
+              </div>
+              <p id="dropHint" class="drop-hint">Drag and drop one image here</p>
+            </div>
+            <p id="currentFileText" class="muted">No image loaded.</p>
+
+            <section class="preview-progress-card">
+              <div class="progress-wrap">
+                <div class="progress-head">
+                  <p id="progressText" class="muted progress-text">Progress: 0/0 (0%)</p>
+                  <div class="progress-chip-row">
+                    <span id="skippedCountChip" class="progress-chip" aria-live="polite">Skipped: 0</span>
+                    <span id="runStatusBadge" class="run-status-badge status-idle" aria-live="polite">Idle</span>
+                  </div>
+                </div>
+                <div class="progress-track" role="progressbar" aria-label="Overall processing progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                  <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <div class="progress-time-row">
+                  <span id="runElapsedText" class="muted progress-text">Elapsed: 00:00</span>
+                  <span id="etaText" class="muted progress-eta">Remaining: -- | ETA: --</span>
+                </div>
+                <p id="skipActivityText" class="muted progress-skip hidden" aria-live="polite"></p>
+              </div>
+              <div class="row meta-actions sticky-start-row">
+                <md-filled-button id="startBtn" type="button" class="action-secondary" disabled aria-disabled="true">Start Processing</md-filled-button>
+                <md-text-button id="restartBtn" type="button" class="hidden">Restart Scan</md-text-button>
+              </div>
+              <div class="progress-message-stack">
+                <p id="resumeBanner" class="resume-banner hidden" aria-live="polite"></p>
+                <div id="inlineStatusAlert" class="inline-status-alert hidden" role="alert" aria-live="assertive" aria-atomic="true">
+                  <div class="inline-status-copy">
+                    <span id="inlineStatusMessage"></span>
+                  </div>
+                  <button id="inlineStatusCloseBtn" type="button" class="inline-status-close" aria-label="Dismiss alert">
+                    <span class="material-icons" aria-hidden="true">close</span>
+                  </button>
+                </div>
+                <p id="runStateText" class="run-state hidden" aria-live="polite"></p>
+              </div>
+              <p id="statusText" class="visually-hidden" aria-live="polite"></p>
+              <div id="confirmControlsAnnouncer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+            </section>
+
+          </div>
+        </article>
+
+        <article class="card metadata-card dashboard-metadata-card">
+          <h2>Generated Metadata</h2>
+          <div class="meta-group">
+            <h3 id="metaDescriptionLabel">Description</h3>
+            <md-outlined-text-field id="metaDescriptionEdit" class="meta-edit-input" type="textarea" rows="3" aria-label="Description"></md-outlined-text-field>
+          </div>
+          <div class="meta-group">
+            <h3 id="metaObjectsLabel">Keywords</h3>
+            <md-outlined-text-field id="metaObjectsEdit" class="meta-edit-input" type="textarea" rows="2" aria-label="Keywords"></md-outlined-text-field>
+          </div>
+          <div class="meta-group">
+            <h3 id="metaActionsLabel">Actions</h3>
+            <md-outlined-text-field id="metaActionsEdit" class="meta-edit-input" type="textarea" rows="2" aria-label="Actions"></md-outlined-text-field>
+          </div>
+          <div id="metaCategoriesGroup" class="meta-group">
+            <h3>Categories</h3>
+            <md-outlined-text-field id="metaCategoriesEdit" class="meta-edit-input" type="textarea" rows="2" aria-label="Categories"></md-outlined-text-field>
+          </div>
+          <div id="metaColorsGroup" class="meta-group">
+            <h3 id="metaColorsLabel">Colors</h3>
+            <md-outlined-text-field id="metaColorsEdit" class="meta-edit-input" type="textarea" rows="2" aria-label="Colors"></md-outlined-text-field>
+          </div>
+          <div class="meta-group">
+            <h3 id="metaCustomTagsLabel">Custom Tags</h3>
+            <md-outlined-text-field id="metaCustomTagsEdit" class="meta-edit-input" type="textarea" rows="2" aria-label="Custom Tags"></md-outlined-text-field>
+          </div>
+          <div id="metaIpRiskGroup" class="meta-group">
+            <h3>Copyright/IP Risk</h3>
+            <div id="metaIpRisk" class="ip-risk-panel">
+              <div class="ip-risk-chip-row" aria-label="IP risk warning levels">
+                <span id="metaIpRiskLow" class="ip-risk-badge level-low disabled">Low</span>
+                <span id="metaIpRiskMedium" class="ip-risk-badge level-medium disabled">Medium</span>
+                <span id="metaIpRiskHigh" class="ip-risk-badge level-high disabled">High</span>
+              </div>
+              <div class="ip-risk-detected-row">
+                <span id="metaIpRiskDetected" class="ip-risk-badge detected-chip">none</span>
+                <span id="metaIpRiskScore" class="muted">0%</span>
+              </div>
+            </div>
+            <div id="metaIpRiskMatches" class="category-list"></div>
+          </div>
+          <div class="meta-actions">
+            <md-outlined-button id="confirmAddBtn" type="button">Save Metadata</md-outlined-button>
+            <md-text-button id="removeMetadataBtn" type="button">Remove Metadata</md-text-button>
+          </div>
+          <details>
+            <summary>Raw JSON</summary>
+            <pre id="metaJson"></pre>
+          </details>
+          <section id="exportCard" class="card export-card metadata-export-card hidden">
+            <div class="export-index-row log-export-row">
+              <md-outlined-button id="exportIndexBtn" type="button">Export Metadata Index</md-outlined-button>
+              <p class="export-helper muted">Exports a searchable metadata file for the current run that you can use to sort, filter, search, or import into other tools.</p>
+            </div>
+          </section>
+        </article>
+
+        <section class="card dashboard-metadata-log-card live-log-card">
+          <div class="section-head">
+            <h3>Live Log</h3>
+            <label class="switch-inline" for="showLogToggle">
+              <span>Show Log</span>
+              <md-switch id="showLogToggle"></md-switch>
+            </label>
+          </div>
+          <div id="liveLog" class="live-log hidden" aria-live="polite"></div>
+          <div class="live-log-actions">
+            <md-text-button id="exportLogBtn" type="button">Export Log</md-text-button>
+          </div>
+        </section>
+
+      </section>
+    </main>
+    <div id="statusToast" class="status-toast hidden" role="status" aria-live="polite" aria-atomic="true">
+      <md-icon-button id="statusToastCloseBtn" type="button" class="status-toast-close" aria-label="Dismiss alert">
+        <span class="material-icons" aria-hidden="true">close</span>
+      </md-icon-button>
+      <span id="statusToastMessage"></span>
+      <div id="statusToastProgressTrack" class="status-toast-progress progress-track hidden" role="progressbar" aria-label="Status toast progress" aria-valuemin="0" aria-valuemax="100" aria-valuetext="Loading">
+        <div id="statusToastProgressFill" class="status-toast-progress-fill progress-fill"></div>
+      </div>
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

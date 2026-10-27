@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="980" viewBox="0 0 1440 980">
+  <defs>
+    <style>
+      .bg { fill: #f2f6fb; }
+      .surface { fill: #ffffff; stroke: #d7e1ef; stroke-width: 1; }
+      .surface-soft { fill: #f9fbfe; stroke: #d7e1ef; stroke-width: 1; }
+      .primary { fill: #1565c0; }
+      .primary-soft { fill: #e8f1fc; stroke: #a8c4e8; stroke-width: 1; }
+      .outline { fill: #ffffff; stroke: #a8bfdc; stroke-width: 1; }
+      .danger { fill: #b3261e; }
+      .chip { fill: #eef5ff; stroke: #c0d5ef; stroke-width: 1; }
+      .success { fill: #edf8f0; stroke: #b9ddc2; stroke-width: 1; }
+      .warn { fill: #fff6e8; stroke: #f0cf93; stroke-width: 1; }
+      .title { font: 700 24px Roboto, Arial, sans-serif; fill: #163a64; }
+      .h2 { font: 700 17px Roboto, Arial, sans-serif; fill: #1f4c78; }
+      .h3 { font: 700 14px Roboto, Arial, sans-serif; fill: #244a70; }
+      .body { font: 500 12px Roboto, Arial, sans-serif; fill: #355572; }
+      .muted { font: 500 11px Roboto, Arial, sans-serif; fill: #6b7f95; }
+      .btnLight { font: 700 12px Roboto, Arial, sans-serif; fill: #ffffff; }
+      .btnDark { font: 700 12px Roboto, Arial, sans-serif; fill: #1f4c78; }
+      .chipText { font: 700 11px Roboto, Arial, sans-serif; fill: #214b79; }
+      .stepNum { font: 700 13px Roboto, Arial, sans-serif; fill: #ffffff; }
+      .stepText { font: 700 12px Roboto, Arial, sans-serif; fill: #214b79; }
+      .inputText { font: 500 12px Roboto, Arial, sans-serif; fill: #4d647d; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1440" height="980"/>
+
+  <!-- Main shell -->
+  <rect class="surface" x="20" y="18" width="1400" height="944" rx="16"/>
+
+  <!-- Top header -->
+  <rect class="surface-soft" x="36" y="34" width="1368" height="94" rx="14"/>
+  <text class="title" x="58" y="68">Wizard-Style Processing Flow</text>
+  <text class="muted" x="58" y="90">Guided, sequential flow for batch processing and review. This mockup shows the “Review Results” step after a batch scan.</text>
+
+  <!-- Stepper -->
+  <rect class="primary" x="58" y="102" width="28" height="28" rx="14"/>
+  <text class="stepNum" x="69" y="121">1</text>
+  <text class="stepText" x="96" y="121">Select Source</text>
+  <line x1="194" y1="116" x2="252" y2="116" stroke="#b9cde6" stroke-width="2"/>
+
+  <rect class="primary" x="252" y="102" width="28" height="28" rx="14"/>
+  <text class="stepNum" x="263" y="121">2</text>
+  <text class="stepText" x="290" y="121">Choose Mode</text>
+  <line x1="390" y1="116" x2="448" y2="116" stroke="#b9cde6" stroke-width="2"/>
+
+  <rect class="primary" x="448" y="102" width="28" height="28" rx="14"/>
+  <text class="stepNum" x="459" y="121">3</text>
+  <text class="stepText" x="486" y="121">Scan</text>
+  <line x1="528" y1="116" x2="586" y2="116" stroke="#1565c0" stroke-width="3"/>
+
+  <rect class="primary" x="586" y="100" width="34" height="34" rx="17"/>
+  <text class="stepNum" x="599" y="122">4</text>
+  <text class="stepText" x="632" y="121">Review Results</text>
+  <line x1="752" y1="116" x2="810" y2="116" stroke="#d3dfea" stroke-width="2"/>
+
+  <rect class="chip" x="810" y="102" width="28" height="28" rx="14"/>
+  <text class="chipText" x="821" y="121">5</text>
+  <text class="stepText" x="848" y="121">Finish</text>
+
+  <!-- Left rail -->
+  <rect class="surface-soft" x="36" y="150" width="292" height="790" rx="14"/>
+  <text class="h2" x="56" y="180">Workflow Summary</text>
+
+  <rect class="primary-soft" x="56" y="196" width="252" height="90" rx="12"/>
+  <text class="h3" x="72" y="220">Step 1: Select Source</text>
+  <text class="body" x="72" y="244">Folder: `/path/to/images`</text>
+  <text class="body" x="72" y="264">219,242 supported images found</text>
+
+  <rect class="primary-soft" x="56" y="298" width="252" height="120" rx="12"/>
+  <text class="h3" x="72" y="322">Step 2: Processing Mode</text>
+  <rect class="chip" x="72" y="336" width="92" height="24" rx="12"/><text class="chipText" x="94" y="352">Balanced</text>
+  <rect class="chip" x="172" y="336" width="84" height="24" rx="12"/><text class="chipText" x="192" y="352">Auto-apply</text>
+  <rect class="chip" x="72" y="368" width="146" height="24" rx="12"/><text class="chipText" x="91" y="384">Skip Existing Metadata</text>
+  <rect class="chip" x="72" y="400" width="112" height="24" rx="12"/><text class="chipText" x="92" y="416">IP Risk Check</text>
+
+  <rect class="primary-soft" x="56" y="430" width="252" height="160" rx="12"/>
+  <text class="h3" x="72" y="454">Step 3: Scan Status</text>
+  <text class="body" x="72" y="478">Progress: 84,090 / 219,242</text>
+  <rect class="outline" x="72" y="492" width="220" height="14" rx="7"/>
+  <rect class="primary" x="72" y="492" width="84" height="14" rx="7"/>
+  <text class="body" x="72" y="530">Elapsed: 52:14:03</text>
+  <text class="body" x="72" y="552">ETA: Mar 8, 4:22 PM</text>
+  <text class="body" x="72" y="574">Skipped: 124,490</text>
+
+  <rect class="surface" x="56" y="610" width="252" height="142" rx="12"/>
+  <text class="h3" x="72" y="634">What This Step Is For</text>
+  <text class="body" x="72" y="658">Review flagged or selected results after</text>
+  <text class="body" x="72" y="676">the batch pass. Edit metadata, approve,</text>
+  <text class="body" x="72" y="694">skip, or approve all remaining items.</text>
+  <text class="body" x="72" y="724">This keeps batch running separate from</text>
+  <text class="body" x="72" y="742">manual inspection and correction.</text>
+
+  <rect class="warn" x="56" y="770" width="252" height="72" rx="12"/>
+  <text class="h3" x="72" y="794">Warnings</text>
+  <text class="body" x="72" y="816">2 items need writable re-selection</text>
+  <text class="body" x="72" y="834">5 items flagged for IP review</text>
+
+  <!-- Center column -->
+  <rect class="surface" x="346" y="150" width="632" height="790" rx="14"/>
+  <text class="h2" x="368" y="180">Current Step: Review Results</text>
+
+  <!-- Compact sticky review bar -->
+  <rect class="surface-soft" x="368" y="196" width="588" height="98" rx="12"/>
+  <text class="h3" x="386" y="220">Review Queue</text>
+  <text class="body" x="386" y="244">12 items need review • 5 IP flags • 7 low-confidence results</text>
+  <rect class="btnOutline" x="386" y="254" width="120" height="28" rx="8"/>
+  <text class="btnDark" x="416" y="272">Prev Item</text>
+  <rect class="btnPrimary" x="516" y="254" width="136" height="28" rx="8"/>
+  <text class="btnLight" x="552" y="272">Approve</text>
+  <rect class="btnOutline" x="662" y="254" width="112" height="28" rx="8"/>
+  <text class="btnDark" x="694" y="272">Skip</text>
+  <rect class="btnOutline" x="784" y="254" width="154" height="28" rx="8"/>
+  <text class="btnDark" x="812" y="272">Approve All Left</text>
+
+  <!-- Image preview -->
+  <rect class="outline" x="368" y="312" width="588" height="474" rx="12"/>
+  <rect x="392" y="336" width="540" height="426" rx="10" fill="#d7dfe9"/>
+  <text class="muted" x="552" y="556">Large image preview</text>
+  <text class="body" x="368" y="812">xenomorph_alien_by_H.R._Giger_040449e2-fcb9-4876-a0ba-70a2....png</text>
+
+  <!-- Footer controls -->
+  <rect class="surface-soft" x="368" y="836" width="588" height="82" rx="12"/>
+  <text class="body" x="386" y="860">Status: reviewing item 3 of 12 flagged results</text>
+  <rect class="success" x="386" y="872" width="118" height="26" rx="13"/>
+  <text class="chipText" x="412" y="889">Keywords OK</text>
+  <rect class="warn" x="514" y="872" width="146" height="26" rx="13"/>
+  <text class="chipText" x="545" y="889">Check IP match</text>
+  <rect class="chip" x="670" y="872" width="124" height="26" rx="13"/>
+  <text class="chipText" x="700" y="889">Low confidence</text>
+
+  <!-- Right column -->
+  <rect class="surface" x="996" y="150" width="408" height="790" rx="14"/>
+  <text class="h2" x="1018" y="180">Review Panel</text>
+
+  <!-- Tabs -->
+  <rect class="primary-soft" x="1018" y="196" width="72" height="28" rx="8"/><text class="chipText" x="1043" y="214">Core</text>
+  <rect class="outline" x="1098" y="196" width="116" height="28" rx="8"/><text class="chipText" x="1121" y="214">Discoverability</text>
+  <rect class="outline" x="1222" y="196" width="74" height="28" rx="8"/><text class="chipText" x="1248" y="214">Risk</text>
+  <rect class="outline" x="1304" y="196" width="78" height="28" rx="8"/><text class="chipText" x="1330" y="214">Raw</text>
+
+  <text class="h3" x="1018" y="254">Description</text>
+  <rect class="outline" x="1018" y="262" width="364" height="100" rx="10"/>
+  <text class="inputText" x="1032" y="286">A dark sci-fi illustration of a xenomorph-like alien</text>
+  <text class="inputText" x="1032" y="304">creature standing in dramatic shadow.</text>
+
+  <text class="h3" x="1018" y="392">Keywords</text>
+  <rect class="outline" x="1018" y="400" width="364" height="64" rx="10"/>
+  <text class="inputText" x="1032" y="424">alien, creature, xenomorph, sci-fi, biomechanical</text>
+
+  <text class="h3" x="1018" y="494">Actions</text>
+  <rect class="outline" x="1018" y="502" width="364" height="56" rx="10"/>
+  <text class="inputText" x="1032" y="526">standing, staring</text>
+
+  <text class="h3" x="1018" y="588">Custom Tags</text>
+  <rect class="outline" x="1018" y="596" width="364" height="56" rx="10"/>
+  <text class="inputText" x="1032" y="620">horror, cinematic, monster</text>
+
+  <text class="h3" x="1018" y="682">Confidence By Field</text>
+  <rect class="surface-soft" x="1018" y="690" width="364" height="92" rx="10"/>
+  <text class="body" x="1032" y="716">Description 92%</text>
+  <rect class="outline" x="1122" y="706" width="232" height="10" rx="5"/><rect class="primary" x="1122" y="706" width="214" height="10" rx="5"/>
+  <text class="body" x="1032" y="742">Keywords 71%</text>
+  <rect class="outline" x="1122" y="732" width="232" height="10" rx="5"/><rect class="primary" x="1122" y="732" width="165" height="10" rx="5"/>
+  <text class="body" x="1032" y="768">IP Risk 46%</text>
+  <rect class="outline" x="1122" y="758" width="232" height="10" rx="5"/><rect class="primary" x="1122" y="758" width="107" height="10" rx="5"/>
+
+  <text class="h3" x="1018" y="814">Primary Actions</text>
+  <rect class="btnOutline" x="1018" y="826" width="132" height="38" rx="9"/>
+  <text class="btnDark" x="1050" y="850">Back to Scan</text>
+  <rect class="btnOutline" x="1160" y="826" width="118" height="38" rx="9"/>
+  <text class="btnDark" x="1192" y="850">Skip Item</text>
+  <rect class="btnPrimary" x="1288" y="826" width="94" height="38" rx="9"/>
+  <text class="btnLight" x="1318" y="850">Approve</text>
+
+  <text class="muted" x="1018" y="900">Wizard principle: only show the controls needed for the current step.</text>
+</svg>
